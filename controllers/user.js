@@ -20,6 +20,7 @@ function pruebas(req,res) {
 function saveUser(req,res){
     var params = req.body; /* capturo lo que me llega del fd */
     var user = new User(); /* creo objeto user con atributos definidos en el modelo User */
+    
 
     if(params.name && params.surname && params.nick && params.email &&params.password){ /* Si  llegan todos los campos hace: */
         user.name = params.name;
@@ -43,7 +44,8 @@ function saveUser(req,res){
                                 user.save ((err,userStored) => { /* guarda el usuario en la bd */
                                     if(err) return res.status(500).send({message: 'Error al guardar usuario'}); /* si regresa eror hace: */
                                     if(userStored){  /* si regresa userStored es por que el usuario se guardo */
-                                        res.status(500).send({user: userStored})
+                                        //res.status(500).send({user: userStored})
+                                        res.status(200).json({userStored});
                                     }else{
                                         res.status(404).send({message: 'No se ha registrado el usuario'});                    
                                     }

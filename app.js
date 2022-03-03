@@ -10,6 +10,7 @@ var publication_routes = require('./routes/publication');
 var message_routes = require('./routes/message');
 
 /* middlewares */
+app.use(express.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());/* todo lo que me llegue lo convierto en json */
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+
 
 
 
